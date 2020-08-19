@@ -1,5 +1,7 @@
 namespace Application.Dtos.Discount
 {
+    using Application.Dtos.Product;
+    using Newtonsoft.Json;
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -11,6 +13,9 @@ namespace Application.Dtos.Discount
         public DateTimeOffset? BeginDate { get; set; }
         public DateTimeOffset? EndDate { get; set; }
         public int DiscountPercentage { get; set; }
+
+        [JsonProperty("product")]
+        public ProductDto ProductDto { get; set; }
 
         // add-on property marker - Do Not Delete This Comment
     }

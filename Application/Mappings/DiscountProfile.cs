@@ -10,6 +10,7 @@ namespace Application.Mappings
         {
             //createmap<to this, from this>
             CreateMap<Discount, DiscountDto>()
+                .ForMember(dest => dest.ProductDto, opt => opt.MapFrom(src => src.Product))
                 .ReverseMap();
             CreateMap<DiscountForCreationDto, Discount>();
             CreateMap<DiscountForUpdateDto, Discount>()

@@ -26,5 +26,7 @@ namespace Domain.Entities
         public int DiscountPercentage { get; set; }
 
         // add-on property marker - Do Not Delete This Comment
+        [ForeignKey("ProductId")]
+        public Product Product { get; set; }
     }
 }

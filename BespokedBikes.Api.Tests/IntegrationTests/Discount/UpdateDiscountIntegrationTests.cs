@@ -44,7 +44,7 @@ namespace BespokedBikes.Api.Tests.IntegrationTests.Discount
             var fakeDiscountOne = new FakeDiscount { }.Generate();
             
             var expectedFinalObject = mapper.Map<DiscountDto>(fakeDiscountOne);
-            expectedFinalObject.ProductId = lookupVal;
+            expectedFinalObject.ProductDto.ProductId = lookupVal;
 
             var appFactory = _factory;
             using (var scope = appFactory.Services.CreateScope())
@@ -109,7 +109,7 @@ namespace BespokedBikes.Api.Tests.IntegrationTests.Discount
 
             var fakeDiscountOne = new FakeDiscount { }.Generate();
             var expectedFinalObject = mapper.Map<DiscountDto>(fakeDiscountOne);
-            expectedFinalObject.ProductId = 999999;
+            expectedFinalObject.ProductDto.ProductId = 999999;
 
             var appFactory = _factory;
             using (var scope = appFactory.Services.CreateScope())

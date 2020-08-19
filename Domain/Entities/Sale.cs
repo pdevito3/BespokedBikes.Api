@@ -23,5 +23,10 @@ namespace Domain.Entities
         public DateTimeOffset? SaleDate { get; set; }
 
         // add-on property marker - Do Not Delete This Comment
+        [ForeignKey("ProductId")]
+        public Product Product { get; set; } = new Product { };
+
+        [ForeignKey("SalespersonId")]
+        public Salesperson Salesperson { get; set; } = new Salesperson { };
     }
 }

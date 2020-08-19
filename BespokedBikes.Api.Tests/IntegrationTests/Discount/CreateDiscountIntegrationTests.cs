@@ -44,7 +44,7 @@ namespace BespokedBikes.Api.Tests.IntegrationTests.Discount
                 .ConfigureAwait(false));
 
             httpResponse.StatusCode.Should().Be(201);
-            resultDto.ProductId.Should().Be(fakeDiscount.ProductId);
+            resultDto.ProductDto.ProductId.Should().Be(fakeDiscount.ProductDto.ProductId);
             resultDto.BeginDate.Should().Be(fakeDiscount.BeginDate);
             resultDto.EndDate.Should().Be(fakeDiscount.EndDate);
             resultDto.DiscountPercentage.Should().Be(fakeDiscount.DiscountPercentage);

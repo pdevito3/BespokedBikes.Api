@@ -33,7 +33,9 @@ namespace Infrastructure.Persistence.Repositories
                 throw new ArgumentNullException(nameof(saleParameters));
             }
 
-            var collection = _context.Sales as IQueryable<Sale>; // TODO: AsNoTracking() should increase performance, but will break the sort tests. need to investigate
+            var collection = _context.Sales
+                .Include(s => s.Product)
+                .Include(s => s.Salesperson) as IQueryable<Sale>; // TODO: AsNoTracking() should increase performance, but will break the sort tests. need to investigate
 
             var sieveModel = new SieveModel
             {

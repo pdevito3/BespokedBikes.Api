@@ -44,8 +44,8 @@ namespace BespokedBikes.Api.Tests.IntegrationTests.Sale
                 .ConfigureAwait(false));
 
             httpResponse.StatusCode.Should().Be(201);
-            resultDto.ProductId.Should().Be(fakeSale.ProductId);
-            resultDto.SalespersonId.Should().Be(fakeSale.SalespersonId);
+            resultDto.ProductDto.ProductId.Should().Be(fakeSale.ProductDto.ProductId);
+            resultDto.SalespersonDto.SalespersonId.Should().Be(fakeSale.SalespersonDto.SalespersonId);
             resultDto.SaleDate.Should().Be(fakeSale.SaleDate);
         }
     } 
