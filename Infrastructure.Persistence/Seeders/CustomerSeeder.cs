@@ -21,6 +21,7 @@ namespace Infrastructure.Persistence.Seeders
                         .RuleFor(fake => fake.StartDate, fake => fake.Date.PastOffset())
                         .RuleFor(fake => fake.Address1, fake => fake.Address.StreetAddress())
                         .RuleFor(fake => fake.Address2, fake => fake.Address.SecondaryAddress())
+                        .RuleFor(fake => fake.State, fake => fake.Address.StateAbbr())
                         .RuleFor(fake => fake.City, fake => fake.Address.City())
                         .RuleFor(fake => fake.PostalCode, fake => fake.Address.ZipCode())
                         );
