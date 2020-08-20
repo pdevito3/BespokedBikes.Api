@@ -19,14 +19,20 @@ namespace Domain.Entities
         [Sieve(CanFilter = true, CanSort = false)]
         public int SalespersonId { get; set; }
 
+        public int CustomerId { get; set; }
+
         [Sieve(CanFilter = true, CanSort = false)]
         public DateTimeOffset? SaleDate { get; set; }
 
         // add-on property marker - Do Not Delete This Comment
+        
+        [ForeignKey("CustomerId")]
+        public virtual Customer Customer { get; set; }
+
         [ForeignKey("ProductId")]
-        public Product Product { get; set; } = new Product { };
+        public virtual Product Product { get; set; } = new Product { };
 
         [ForeignKey("SalespersonId")]
-        public Salesperson Salesperson { get; set; } = new Salesperson { };
+        public virtual Salesperson Salesperson { get; set; } = new Salesperson { };
     }
 }

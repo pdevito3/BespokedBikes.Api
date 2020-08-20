@@ -18,7 +18,7 @@ namespace Infrastructure.Persistence.Seeders
 
                 for (var eachCustomer = 1; eachCustomer <= 10; eachCustomer++)
                 {
-                    var productIndex = new Faker().Random.Number(1, products.Count());
+                    var productIndex = new Faker().Random.Number(0, products.Count()-1);
                     var productKey = products[productIndex].ProductId;
 
                     context.Discounts.Add(new Faker<Discount>()
@@ -29,6 +29,9 @@ namespace Infrastructure.Persistence.Seeders
                         );
                 }
 
+                context.SaveChanges();
+
+                context.Products.RemoveRange(context.Products.Where(p => p.Name == null));
                 context.SaveChanges();
             }
         }

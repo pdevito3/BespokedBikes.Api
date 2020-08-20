@@ -15,22 +15,32 @@ namespace Infrastructure.Persistence.Seeders
             {
                 var salespeople = context.Salespersons.ToList();
                 var products = context.Products.ToList();
+                var customers = context.Customers.ToList();
 
-                for (var eachCustomer = 1; eachCustomer <= 10; eachCustomer++)
+                for (var eachCustomer = 1; eachCustomer <= 20; eachCustomer++)
                 {
-                    var productIndex = new Faker().Random.Number(1, products.Count());
-                    var salespersonIndex = new Faker().Random.Number(1, salespeople.Count());
+                    var productIndex = new Faker().Random.Number(0, products.Count()-1);
                     var productKey = products[productIndex].ProductId;
+
+                    var customerIndex = new Faker().Random.Number(0, customers.Count()-1);
+                    var customerKey = customers[customerIndex].CustomerId;
+
+                    var salespersonIndex = new Faker().Random.Number(0, salespeople.Count()-1);
                     var salespersonKey = salespeople[salespersonIndex].SalespersonId;
 
                     context.Sales.Add(new Faker<Sale>()
                         .RuleFor(fake => fake.ProductId, fake => productKey)
                         .RuleFor(fake => fake.SalespersonId, fake => salespersonKey)
-                        .RuleFor(fake => fake.EndDate, fake => fake.Date.FutureOffset())
-                        .RuleFor(fake => fake.DiscountPercentage, fake => fake.Random.Decimal((decimal)0, (decimal)0.3))
+                        .RuleFor(fake => fake.CustomerId, fake => customerKey)
+                        .RuleFor(fake => fake.SaleDate, fake => fake.Date.Recent())
                         );
                 }
 
+                context.SaveChanges();
+
+                context.Products.RemoveRange(context.Products.Where(p => p.Name == null));
+                context.Salespersons.RemoveRange(context.Salespersons.Where(p => p.FirstName == null));
+                context.Customers.RemoveRange(context.Customers.Where(p => p.FirstName == null));
                 context.SaveChanges();
             }
         }

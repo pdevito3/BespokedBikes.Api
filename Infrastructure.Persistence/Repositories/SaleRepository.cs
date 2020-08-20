@@ -35,6 +35,7 @@ namespace Infrastructure.Persistence.Repositories
 
             var collection = _context.Sales
                 .Include(s => s.Product)
+                .Include(s => s.Customer)
                 .Include(s => s.Salesperson) as IQueryable<Sale>; // TODO: AsNoTracking() should increase performance, but will break the sort tests. need to investigate
 
             var sieveModel = new SieveModel
