@@ -23,7 +23,7 @@ namespace Domain.Entities
         public DateTimeOffset? EndDate { get; set; }
 
         [Sieve(CanFilter = true, CanSort = false)]
-        public int DiscountPercentage { get; set; }
+        public decimal? DiscountPercentage { get; set; }
 
         // add-on property marker - Do Not Delete This Comment
         [ForeignKey("ProductId")]

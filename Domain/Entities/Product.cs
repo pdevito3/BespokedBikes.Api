@@ -32,7 +32,7 @@ namespace Domain.Entities
         public int QuantityOnHand { get; set; }
 
         [Sieve(CanFilter = true, CanSort = false)]
-        public int ComissionPercentage { get; set; }
+        public decimal? ComissionPercentage { get; set; }
 
         // add-on property marker - Do Not Delete This Comment
     }

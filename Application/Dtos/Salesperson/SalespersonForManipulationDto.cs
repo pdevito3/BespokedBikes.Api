@@ -16,7 +16,7 @@ namespace Application.Dtos.Salesperson
         public string PhoneNumber { get; set; }
         public DateTimeOffset? StartDate { get; set; }
         public DateTimeOffset? TerminationDate { get; set; }
-        public int Manager { get; set; }
+        public string Manager { get; set; }
 
         // add-on property marker - Do Not Delete This Comment
     }

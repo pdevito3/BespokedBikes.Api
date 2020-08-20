@@ -13,7 +13,7 @@ namespace Application.Dtos.Product
         public int PurchasePrice { get; set; }
         public int SalePrice { get; set; }
         public int QuantityOnHand { get; set; }
-        public int ComissionPercentage { get; set; }
+        public decimal? ComissionPercentage { get; set; }
 
         // add-on property marker - Do Not Delete This Comment
     }

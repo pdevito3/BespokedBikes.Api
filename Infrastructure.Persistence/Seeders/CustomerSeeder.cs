@@ -12,9 +12,19 @@ namespace Infrastructure.Persistence.Seeders
         {
             if (!context.Customers.Any())
             {
-                context.Customers.Add(new AutoFaker<Customer>());
-                context.Customers.Add(new AutoFaker<Customer>());
-                context.Customers.Add(new AutoFaker<Customer>());
+                for(var eachCustomer = 1; eachCustomer <= 50; eachCustomer++)
+                {
+                    context.Customers.Add(new AutoFaker<Customer>()
+                        .RuleFor(fake => fake.FirstName, fake => fake.Name.FirstName())
+                        .RuleFor(fake => fake.LastName, fake => fake.Name.LastName())
+                        .RuleFor(fake => fake.PhoneNumber, fake => fake.Phone.PhoneNumber("###-###-####"))
+                        .RuleFor(fake => fake.StartDate, fake => fake.Date.PastOffset())
+                        .RuleFor(fake => fake.Address1, fake => fake.Address.StreetAddress())
+                        .RuleFor(fake => fake.Address2, fake => fake.Address.SecondaryAddress())
+                        .RuleFor(fake => fake.City, fake => fake.Address.City())
+                        .RuleFor(fake => fake.PostalCode, fake => fake.Address.ZipCode())
+                        );
+                }
 
                 context.SaveChanges();
             }

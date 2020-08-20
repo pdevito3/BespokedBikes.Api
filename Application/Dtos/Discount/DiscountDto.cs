@@ -12,7 +12,7 @@ namespace Application.Dtos.Discount
         public int ProductId { get; set; }
         public DateTimeOffset? BeginDate { get; set; }
         public DateTimeOffset? EndDate { get; set; }
-        public int DiscountPercentage { get; set; }
+        public decimal? DiscountPercentage { get; set; }
 
         [JsonProperty("product")]
         public ProductDto ProductDto { get; set; }

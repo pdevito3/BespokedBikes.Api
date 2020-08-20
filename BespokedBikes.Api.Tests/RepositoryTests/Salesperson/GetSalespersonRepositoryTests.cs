@@ -567,13 +567,13 @@ namespace BespokedBikes.Api.Tests.RepositoryTests.Salesperson
             var sieveOptions = Options.Create(new SieveOptions());
 
             var fakeSalespersonOne = new FakeSalesperson { }.Generate();
-            fakeSalespersonOne.Manager = 1;
+            fakeSalespersonOne.Manager = "alpha";
 
             var fakeSalespersonTwo = new FakeSalesperson { }.Generate();
-            fakeSalespersonTwo.Manager = 2;
+            fakeSalespersonTwo.Manager = "bravo";
 
             var fakeSalespersonThree = new FakeSalesperson { }.Generate();
-            fakeSalespersonThree.Manager = 3;
+            fakeSalespersonThree.Manager = "charlie";
 
             //Act
             using (var context = new BespokedBikesDbContext(dbOptions))
@@ -583,7 +583,7 @@ namespace BespokedBikes.Api.Tests.RepositoryTests.Salesperson
 
                 var service = new SalespersonRepository(context, new SieveProcessor(sieveOptions));
 
-                var salespersonRepo = service.GetSalespersons(new SalespersonParametersDto { Filters = $"Manager == 2" });
+                var salespersonRepo = service.GetSalespersons(new SalespersonParametersDto { Filters = $"Manager == bravo" });
 
                 //Assert
                 salespersonRepo.Should()

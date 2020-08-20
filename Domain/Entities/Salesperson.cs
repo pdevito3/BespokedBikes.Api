@@ -44,7 +44,7 @@ namespace Domain.Entities
         public DateTimeOffset? TerminationDate { get; set; }
 
         [Sieve(CanFilter = true, CanSort = false)]
-        public int Manager { get; set; }
+        public string Manager { get; set; }
 
         // add-on property marker - Do Not Delete This Comment
     }

@@ -9,7 +9,7 @@ namespace Application.Dtos.Discount
         public int ProductId { get; set; }
         public DateTimeOffset? BeginDate { get; set; }
         public DateTimeOffset? EndDate { get; set; }
-        public int DiscountPercentage { get; set; }
+        public decimal? DiscountPercentage { get; set; }
 
         // add-on property marker - Do Not Delete This Comment
     }
