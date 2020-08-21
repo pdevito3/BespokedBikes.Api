@@ -50,7 +50,7 @@ namespace BespokedBikes.Api.Tests.IntegrationTests.Product
             resultDto.PurchasePrice.Should().Be(fakeProduct.PurchasePrice);
             resultDto.SalePrice.Should().Be(fakeProduct.SalePrice);
             resultDto.QuantityOnHand.Should().Be(fakeProduct.QuantityOnHand);
-            resultDto.ComissionPercentage.Should().Be(fakeProduct.ComissionPercentage);
+            resultDto.CommissionPercentage.Should().Be(fakeProduct.CommissionPercentage);
         }
     } 
 }

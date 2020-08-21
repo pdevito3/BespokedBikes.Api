@@ -17,7 +17,7 @@ namespace Infrastructure.Persistence.Seeders
                 for (var eachCustomer = 1; eachCustomer <= 50; eachCustomer++)
                 {
                     var amount = new Faker().Random.Number(0, 50000);
-                    var discount = new Faker().Random.Decimal((decimal)0, (decimal)0.3);
+                    var discount = new Faker().Random.Decimal((decimal).7, (decimal).95);
 
                     context.Products.Add(new AutoFaker<Product>()
                         .RuleFor(fake => fake.Name, fake => fake.Commerce.Product())
@@ -26,13 +26,9 @@ namespace Infrastructure.Persistence.Seeders
                         .RuleFor(fake => fake.SalePrice, amount)
                         .RuleFor(fake => fake.PurchasePrice, fake => Convert.ToInt32((amount*discount)))
                         .RuleFor(fake => fake.QuantityOnHand, fake => fake.Random.Number(5,500))
-                        .RuleFor(fake => fake.ComissionPercentage, fake => Math.Round(fake.Random.Decimal((decimal)0.1, (decimal)0.3),2))
+                        .RuleFor(fake => fake.CommissionPercentage, fake => Math.Round(fake.Random.Decimal((decimal)0.1, (decimal)0.3),2))
                         );
                 }
-
-                context.Products.Add(new AutoFaker<Product>());
-                context.Products.Add(new AutoFaker<Product>());
-                context.Products.Add(new AutoFaker<Product>());
 
                 context.SaveChanges();
             }

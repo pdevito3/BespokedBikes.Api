@@ -47,7 +47,7 @@ namespace BespokedBikes.Api.Tests.RepositoryTests.Product
                 productById.PurchasePrice.Should().Be(fakeProduct.PurchasePrice);
                 productById.SalePrice.Should().Be(fakeProduct.SalePrice);
                 productById.QuantityOnHand.Should().Be(fakeProduct.QuantityOnHand);
-                productById.ComissionPercentage.Should().Be(fakeProduct.ComissionPercentage);
+                productById.CommissionPercentage.Should().Be(fakeProduct.CommissionPercentage);
             }
         }
         
@@ -410,7 +410,7 @@ namespace BespokedBikes.Api.Tests.RepositoryTests.Product
         }
 
         [Fact]
-        public void GetProducts_FilterComissionPercentageListWithExact()
+        public void GetProducts_FilterCommissionPercentageListWithExact()
         {
             //Arrange
             var dbOptions = new DbContextOptionsBuilder<BespokedBikesDbContext>()
@@ -419,13 +419,13 @@ namespace BespokedBikes.Api.Tests.RepositoryTests.Product
             var sieveOptions = Options.Create(new SieveOptions());
 
             var fakeProductOne = new FakeProduct { }.Generate();
-            fakeProductOne.ComissionPercentage = 1;
+            fakeProductOne.CommissionPercentage = 1;
 
             var fakeProductTwo = new FakeProduct { }.Generate();
-            fakeProductTwo.ComissionPercentage = 2;
+            fakeProductTwo.CommissionPercentage = 2;
 
             var fakeProductThree = new FakeProduct { }.Generate();
-            fakeProductThree.ComissionPercentage = 3;
+            fakeProductThree.CommissionPercentage = 3;
 
             //Act
             using (var context = new BespokedBikesDbContext(dbOptions))
@@ -435,7 +435,7 @@ namespace BespokedBikes.Api.Tests.RepositoryTests.Product
 
                 var service = new ProductRepository(context, new SieveProcessor(sieveOptions));
 
-                var productRepo = service.GetProducts(new ProductParametersDto { Filters = $"ComissionPercentage == 2" });
+                var productRepo = service.GetProducts(new ProductParametersDto { Filters = $"CommissionPercentage == 2" });
 
                 //Assert
                 productRepo.Should()

@@ -30,9 +30,9 @@ namespace Domain.Entities
         public virtual Customer Customer { get; set; }
 
         [ForeignKey("ProductId")]
-        public virtual Product Product { get; set; } = new Product { };
+        public virtual Product Product { get; set; } 
 
         [ForeignKey("SalespersonId")]
-        public virtual Salesperson Salesperson { get; set; } = new Salesperson { };
+        public virtual Salesperson Salesperson { get; set; } 
     }
 }

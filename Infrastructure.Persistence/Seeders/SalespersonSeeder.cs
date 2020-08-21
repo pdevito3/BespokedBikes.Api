@@ -12,7 +12,7 @@ namespace Infrastructure.Persistence.Seeders
         {
             if (!context.Salespersons.Any())
             {
-                for (var eachCustomer = 1; eachCustomer <= 50; eachCustomer++)
+                for (var eachCustomer = 1; eachCustomer <= 10; eachCustomer++)
                 {
                     context.Salespersons.Add(new AutoFaker<Salesperson>()
                         .RuleFor(fake => fake.FirstName, fake => fake.Name.FirstName())
@@ -24,6 +24,24 @@ namespace Infrastructure.Persistence.Seeders
                         .RuleFor(fake => fake.City, fake => fake.Address.City())
                         .RuleFor(fake => fake.PostalCode, fake => fake.Address.ZipCode())
                         .RuleFor(fake => fake.TerminationDate, fake => fake.Date.PastOffset())
+                        .RuleFor(fake => fake.StartDate, fake => fake.Date.PastOffset())
+                        .RuleFor(fake => fake.Manager, fake => fake.Name.FullName())
+                        );
+                }
+
+
+                for (var eachCustomer = 1; eachCustomer <= 30; eachCustomer++)
+                {
+                    context.Salespersons.Add(new AutoFaker<Salesperson>()
+                        .RuleFor(fake => fake.FirstName, fake => fake.Name.FirstName())
+                        .RuleFor(fake => fake.LastName, fake => fake.Name.LastName())
+                        .RuleFor(fake => fake.PhoneNumber, fake => fake.Phone.PhoneNumber("###-###-####"))
+                        .RuleFor(fake => fake.StartDate, fake => fake.Date.PastOffset())
+                        .RuleFor(fake => fake.Address1, fake => fake.Address.StreetAddress())
+                        .RuleFor(fake => fake.Address2, fake => fake.Address.SecondaryAddress())
+                        .RuleFor(fake => fake.City, fake => fake.Address.City())
+                        .RuleFor(fake => fake.PostalCode, fake => fake.Address.ZipCode())
+                        .RuleFor(fake => fake.TerminationDate, fake => null)
                         .RuleFor(fake => fake.StartDate, fake => fake.Date.PastOffset())
                         .RuleFor(fake => fake.Manager, fake => fake.Name.FullName())
                         );
